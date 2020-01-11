@@ -25,9 +25,3 @@ class EnigmaTest < Minitest::Test
   end
 
 end
-
-
-# character_set = ("a".."z").to_a << " "
-#
-# @timestamp = Time.now
-# @timestamp=2020-01-09 19:09:27
