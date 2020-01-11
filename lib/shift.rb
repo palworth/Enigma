@@ -49,9 +49,6 @@ class Shift
        @generated_key
     else
       @generated_key = key.to_i
-      require "pry"; binding.pry
     end.to_s.split(//).map{|number| number.to_i}
   end
-
-
 end
