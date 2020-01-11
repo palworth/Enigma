@@ -7,4 +7,8 @@ class AlphabetTest < Minitest::Test
     @alphabet = Alphabet.new
   end
 
-end 
+  def test_it_exists
+    assert_instance_of Alphabet, @alphabet
+  end
+
+end
