@@ -1,22 +1,29 @@
 # require './shift'
 
 class Enigma
-  attr_reader :date, :date_today, :character_list
+  attr_reader :date, :character_list, :shift_infomation
 
   def initialize
     @date = date
-    @date_today = Time.now.strftime("%m/%d/%y").gsub("/", "").to_i
     @shift_infomation = Shift.new
     @character_list = ("a".."z").to_a << " "
   end
 
   def encrypt(message, key = nil, date = nil)
-    # require "pry"; binding.pry
     {
       encryption: msg_fuser(msg_converter(message, key, date)) ,
       key: key,
-      date: date
+      date: date_output(date)
     }
+  end
+
+  def date_output(date = nil)
+    output = if date == nil
+      @shift_infomation.date_today
+    else
+      date
+    end
+    output
   end
 
   def msg_converter(message, key = nil, date = nil)
