@@ -12,6 +12,7 @@ class ShiftTest < Minitest::Test
   end
 
   def test_it_returns_date
+    @shift.stubs(:date_today => "120120")
     assert_equal "120120", @shift.date_today
   end
 
@@ -34,6 +35,7 @@ class ShiftTest < Minitest::Test
   end
 
   def test_it_returns_generated_key
+    @shift.stubs(:generated_key => "12345")
     assert_equal "12345", @shift.generated_key
   end
 
