@@ -12,7 +12,7 @@ class Enigma
   def encrypt(message, key = nil, date = nil)
     {
       encryption: msg_fuser(msg_converter(message, key, date)) ,
-      key: key,
+      key: key_output(key),
       date: date_output(date)
     }
   end
@@ -22,6 +22,15 @@ class Enigma
       @shift_infomation.date_today
     else
       date
+    end
+    output
+  end
+
+  def key_output(key = nil)
+    output = if key == nil
+      @shift_infomation.generated_key
+    else
+      key
     end
     output
   end
