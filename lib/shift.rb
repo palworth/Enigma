@@ -12,7 +12,7 @@ class Shift
        c: key(key)[:c] + offset(date)[:c],
        d: key(key)[:d] + offset(date)[:d],
     }
- end
+  end
 
   def offset(date = nil)
     {
