@@ -1,8 +1,8 @@
 class Shift
   attr_reader :date_today, :generated_key
   def initialize
-    @date_today = Time.now.strftime("%m/%d/%y").gsub("/", "").to_i
-    @generated_key = "12345".to_i
+    @date_today = Time.now.strftime("%d/%m/%y").gsub("/", "").to_i
+    @generated_key = "12345"
   end
 
   def shift(key = nil, date = nil)
@@ -33,7 +33,7 @@ class Shift
 
   def key(key = nil)
     divided_key = []
-    key_split.each_cons(2) do |numbers|
+    key_split(key).each_cons(2) do |numbers|
       divided_key << numbers.join.to_i
     end
     {
@@ -48,10 +48,7 @@ class Shift
     if key == nil
        @generated_key
     else
-      @generated_key = key.to_i
-      require "pry"; binding.pry
+      @generated_key = key
     end.to_s.split(//).map{|number| number.to_i}
   end
-
-
 end
