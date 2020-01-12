@@ -1,3 +1,5 @@
+require 'date'
+
 class Shift
   attr_reader :date_today, :generated_key
   def initialize
