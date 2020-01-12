@@ -14,7 +14,6 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_encrypts_message
-    require "pry"; binding.pry
     expected = {
       encryption: "keder ohulw",
       key: "02715",
