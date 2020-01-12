@@ -4,7 +4,6 @@ require 'date'
 
 class ShiftTest < Minitest::Test
   def setup
-    # @enigma = Enigma.new
     @shift = Shift.new
   end
 
@@ -13,7 +12,7 @@ class ShiftTest < Minitest::Test
   end
 
   def test_it_returns_date
-    assert_equal 120120, @shift.date_today
+    assert_equal "120120", @shift.date_today
   end
 
   def test_it_returns_final_offset_split_array
