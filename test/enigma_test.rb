@@ -32,6 +32,15 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.encrypt("hello world", "02715")
   end
 
+  def test_it_encrypts_message_without_key_arg
+    expected = {
+      encryption: "uauhawekdhm",
+      key: "12345",
+      date: "040895"
+    }
+    assert_equal expected, @enigma.encrypt("hello world", nil, "040895")
+  end
+
   def test_it_can_return_date_with_date_arg
     assert_equal "010120", @enigma.date_output("010120")
   end
