@@ -1,7 +1,7 @@
 class Shift
   attr_reader :date_today, :generated_key
   def initialize
-    @date_today = Time.now.strftime("%d/%m/%y").gsub("/", "").to_i
+    @date_today = Time.now.strftime("%d/%m/%y").gsub("/", "")
     @generated_key = "12345"
   end
 
@@ -25,7 +25,7 @@ class Shift
 
   def final_offset_split(date = nil)
     if date == nil
-       @date_today**2
+       @date_today.to_i**2
     else
       date.to_i**2
     end.to_s.split(//).map{|number| number.to_i}
