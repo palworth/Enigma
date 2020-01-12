@@ -14,7 +14,6 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_encrypts_message
-    # skip
     expected = {
       encryption: "keder ohulw",
       key: "02715",
@@ -50,7 +49,14 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.encrypt("hello world!", nil, nil)
   end
 
-
+  def test_it_decrypts_message
+    expected = {
+      decryption: "hello world",
+           key: "02715",
+           date: "040895"
+    }
+    assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
+  end
 
   def test_it_can_return_date_with_date_arg
     assert_equal "010120", @enigma.date_output("010120")
