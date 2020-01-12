@@ -14,12 +14,30 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_encrypts_message
+    # skip
     expected = {
       encryption: "keder ohulw",
       key: "02715",
       date: "040895"
     }
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
+  end
+
+  def test_it_encrypts_message_without_date_arg
+    expected = {
+      encryption: "nib udmcxpu",
+      key: "02715",
+      date: "120120"
+    }
+    assert_equal expected, @enigma.encrypt("hello world", "02715")
+  end
+
+  def test_it_can_return_date_with_date_arg
+    assert_equal "010120", @enigma.date_output("010120")
+  end
+
+  def test_it_can_return_date_without_date_arg
+    assert_equal "120120", @enigma.date_output
   end
 
   def test_it_can_isolate_messages
