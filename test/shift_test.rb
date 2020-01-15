@@ -17,7 +17,7 @@ class ShiftTest < Minitest::Test
   end
 
   def test_it_returns_final_offset_split_array
-    assert_equal [1, 4, 4, 2, 8, 8, 1, 4, 4, 0, 0], @shift.final_offset_split
+    assert_equal [2, 2, 5, 3, 6, 0, 1, 4, 4, 0, 0], @shift.final_offset_split
   end
 
   def test_final_offset_split_array_changes_with_argument
@@ -40,6 +40,8 @@ class ShiftTest < Minitest::Test
   end
 
   def test_it_returns_key_split
+    @shift.stubs(:key_split => [1, 2, 3, 4, 5])
+
     assert_equal [1, 2, 3, 4, 5], @shift.key_split
   end
 
