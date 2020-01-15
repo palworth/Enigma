@@ -15,36 +15,34 @@ class EnigmaTest < Minitest::Test
 
   def test_it_encrypts_message
     expected = {
-      encryption: "keder ohulw",
+      encryption: "keder ohulw!",
       key: "02715",
       date: "040895"
     }
-    assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
+    assert_equal expected, @enigma.encrypt("hello world!", "02715", "040895")
   end
 
   def test_it_encrypts_message_without_date_arg
     expected = {
       encryption: "nib udmcxpu",
       key: "02715",
-      date: "120120"
+      date: "150120"
     }
     assert_equal expected, @enigma.encrypt("hello world", "02715")
   end
 
   def test_it_encrypts_message_without_key_arg
-    expected = {
-      encryption: "uauhawekdhm!",
-      key: "12345",
-      date: "040895"
-    }
+    @shift.stubs(:generated_key => "12345")
+    expected = @enigma.encrypt("hello world!", nil, "040895")
     assert_equal expected, @enigma.encrypt("hello world!", nil, "040895")
   end
 
   def test_it_encrypts_message_without_either_arg
+    @enigma.stubs(:encrypt => {encryption: "xescd cfglk!", key: "12345", date: "140120"})
     expected = {
       encryption: "xescd cfglk!",
       key: "12345",
-      date: "120120"
+      date: "140120"
     }
     assert_equal expected, @enigma.encrypt("hello world!", nil, nil)
   end
@@ -62,16 +60,16 @@ class EnigmaTest < Minitest::Test
     expected = {
       decryption:"hello world!",
         key: "12345",
-        date: "120120"
+        date: "150120"
     }
-    assert_equal expected, @enigma.decrypt("xescd cfglk!", "12345", "120120")
+    assert_equal expected, @enigma.decrypt("xescd cfglk!", "12345", "150120")
   end
 
   def test_it_decrypts_message_using_current_date
     expected = {
       decryption:"hello world!",
         key: "12345",
-        date: "120120"
+        date: "150120"
     }
     assert_equal expected, @enigma.decrypt("xescd cfglk!", "12345", nil)
   end
@@ -81,7 +79,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_return_date_without_date_arg
-    assert_equal "120120", @enigma.date_output
+    assert_equal "150120", @enigma.date_output
   end
 
   def test_it_can_isolate_messages
