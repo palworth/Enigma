@@ -4,7 +4,7 @@ class Shift
   attr_reader :date_today, :generated_key
   def initialize
     @date_today = Time.now.strftime("%d/%m/%y").gsub("/", "")
-    @generated_key = "12345"
+    @generated_key = Array.new(5){rand(10)}.join
   end
 
   def shift(key = nil, date = nil)
